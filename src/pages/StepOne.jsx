@@ -1,4 +1,9 @@
 import React from "react";
+import { AppInput } from "../components/AppInput";
+import { AppButton } from "../components/AppButton";
+import { AppHeader } from "../components/AppHeader";
+import { LinkButton } from "../components/LinkButton";
+
 
 const StepOne = () => {
   return (
@@ -20,21 +25,23 @@ const StepOne = () => {
             </div>
           </div>
           <div className="question">
-            <h2>1. Занимательный вопрос</h2>
-            <label className="input-wrapper">
-              <input
-                required
-                type="text"
-                name="answer"
-                placeholder="Ваш ответ"
-              />
-              <span id="error-message">
-                Введите номер в правильном формате например
-              </span>
-            </label>
-            <button type="button" disabled id="next-btn">
-              Далее
-            </button>
+            <AppHeader
+            headerText="1. Занимательный вопрос"
+            headerType="h1"
+            />
+            <AppInput
+            inputType="text"
+            id="answer"
+            inputPlaceholder="Ваш ответ"
+            errorText="Введите в правильном формате"
+            />
+            <AppButton 
+            isDisabled={false} 
+            buttonType="button" 
+            buttonText="Далее"
+            /> 
+            <LinkButton isDisabled={false} LinkType="Button"Linktext="Далее" LinkBtn="/step-two"/>
+            
           </div>
         </div>
       </div>
