@@ -9,7 +9,8 @@ export const AppInput = ({
     errorText,
     inputValue,
     inputChange,
-    hasError
+    hasError,
+    onChange
 }) => {
     return (
         <label className={`input-wrapper ${hasError && "_error"} `} htmlFor={id}>
@@ -21,7 +22,8 @@ export const AppInput = ({
                 id={id}
                 placeholder={inputPlaceholder}
                 value={inputValue}
-                onChange={(e)=>inputChange(e.target.value)}
+                // onChange={(e)=>inputChange(e.target.value)}
+                onChange={onChange}
               />
               {hasError && <span id="error-message">
                 {errorText}

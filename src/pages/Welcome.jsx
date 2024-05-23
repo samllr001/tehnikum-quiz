@@ -28,8 +28,10 @@ const handleClick = () =>{
     setNameError(false);
     setPhoneError(false);
     navigate("/step-one");
+    localStorage.setItem("userInfo",JSON.stringify(name,phone))
+    localStorage.setItem("userPhone",JSON.stringify(phone))
    }
-}
+};
 
 useEffect(() =>{
   if(!name || !phone){
@@ -49,18 +51,23 @@ useEffect(() =>{
           />
           <form className="welcome__form">
             <AppInput 
-            // hasError={nameError}
+            hasError={nameError}
+            // onChange={onChange}
+            onChange={(e) => setName(e.target.value)}
             inputChange={setName}
             inputValue={name}
             inputLabel="Ваше имя" 
             inputPlaceholder="Ваш ответ"
             inputType="text"
             id= "username"
-            errorText="Введите в правильном формате Имя"
+            errorText="Введите имя в правильном формате"
+            // hasError={true}
             />
             <AppInput 
-            // hasError={phoneError}
-            inputLabel="Ваше номер" 
+            hasError={phoneError}
+            // onChange={onChange}
+            onChange={(e) => setPhone(e.target.value)}
+            inputLabel="Ваш номер" 
             inputValue={phone}
             inputChange={setPhone}
             inputPlaceholder="+998-90"

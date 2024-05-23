@@ -1,9 +1,8 @@
 import React from "react";
 
-export const AnswerItem = ({id,src,LabelText,onChange,checked}) => {
+export const AnswerItem = ({id,imgSrc, imgAlt, LabelText,onChange,checked}) => {
     return(
         <li className="variant-wrapper">
-          <img src={src} alt={LabelText}/> 
         <input 
         required 
         type="radio" 
@@ -12,7 +11,11 @@ export const AnswerItem = ({id,src,LabelText,onChange,checked}) => {
         onChange={onChange}
         checked={checked}
         />
-        <label htmlFor={id}>{LabelText}</label>
+         <label htmlFor={id}> 
+        {imgSrc && <img src={imgSrc} alt={imgAlt} />}
+        {LabelText} 
+        </label>
+
       </li>
       
     );

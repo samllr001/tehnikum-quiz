@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { ProgressBar } from "../components/ProgressBar";
 import { AppHeader } from "../components/AppHeader";
 import { AnswerItem } from "../components/AnswerItem";
+import {LinkButton } from "../components/LinkButton";
 
 const StepTwo = () => {
 
@@ -25,13 +26,18 @@ const variants = [
 ]  
 
 const [checkedAnswer, setcheckedAnswer]=useState(null);
-console.log(checkedAnswer);
+
+if(checkedAnswer==null){
+  localStorage.setItem("checkedCourse","")
+}else{
+  localStorage.setItem("checkedCourse",JSON.stringify(checkedAnswer))
+}
 
   return (
     <div className="container">
       <div className="wrapper">
         <div className="variants-quiz">
-         <ProgressBar/>
+         <ProgressBar currentStep={1}/>
           <div className="question">
            <AppHeader headerText="На каком курсе вы обучаетесь ?" headerType="h2"/>
             <ul className="variants">
@@ -40,14 +46,18 @@ console.log(checkedAnswer);
               key={elem.id} 
               id={elem.id} 
               LabelText={elem.LabelText}
-              onChange={()=>setcheckedAnswer(elem.id)}
-              checked={checkedAnswer===elem.id}
+              onChange={()=>setcheckedAnswer(elem.LabelText)}
+              checked={checkedAnswer===elem.LabelText}
               />
               )}
             </ul>
-            <button type="button" disabled id="next-btn">
+            <LinkButton isDisabled={checkedAnswer === null}
+             LinkTypeType="button" 
+            LinktextText="Далее" 
+            LinkBtn="/step-three"/>
+            {/* <button type="button" disabled id="next-btn">
               Далее
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
